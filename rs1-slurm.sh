@@ -5,9 +5,8 @@
 #SBATCH --time=24:00:00   # walltime
 #SBATCH --ntasks=1   # number of processor cores (i.e. tasks)
 #SBATCH --nodes=1   # number of nodes
-#SBATCH --cpus-per-task=10   # number of CPUs for this task
 
-
+#SBATCH --cpus-per-task=5	# number of processors per task
 #SBATCH -J "rs1"   # job name
 
 ## /SBATCH -p general # partition (queue)
@@ -27,7 +26,6 @@ os.chdir('session01/array01'); \
 DPT.objects.processDirs(level='channel', cmd='import PyHipp as pyh; from PyHipp import mountain_batch; mountain_batch.mountain_batch(); from PyHipp import export_mountain_cells; export_mountain_cells.export_mountain_cells();'); \
 print(time.localtime()); \
 print(time.time()-t0);"
-
 
 aws sns publish --topic-arn arn:aws:sns:ap-southeast-1:122746807027:awsnotify --message "JobDone"
 
